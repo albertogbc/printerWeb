@@ -1,0 +1,21 @@
+
+.lista-container {
+  max-height: 80vh; /* 80% de la altura de la pantalla */
+  overflow-y: auto;  
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  max-width: 270px;
+}
+
+
+  ul li {
+    cursor: pointer;
+  }
+
+  input {
+    width: 270px; /* Ancho específico */
+    height: 50px; /* Alto específico */
+    max-width: 100%; /* Asegura que no exceda el contenedor */
+    max-height: 800px; /* Límite máximo de altura */
+  }
+  

@@ -1,0 +1,34 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Printer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+   
+</head>
+<body>
+ 
+  <nav class="navbar"></nav>
+  <div class="contenedor">
+    
+    <div class="listado-container">
+      <app-listado-epas 
+        (mostrarFormulario)="mostrarForm()" 
+        (valorSeleccionado)="manejarValorSeleccionado($event)"
+        (mostrarOrdenId)="recuperarOrden($event)"> 
+      </app-listado-epas>
+    </div>
+    <br>
+    <br>
+  
+    <div class="etiqueta-container" style="margin-top: 50px;">
+      <ng-container *ngIf="mostrarFormulario">
+        <app-etiqueta-form [valorPorDefecto]="valorPorDefecto" [noOrden]="ordenNo"></app-etiqueta-form>
+      </ng-container>
+    </div>
+  </div>
+</body>
+
+</html>

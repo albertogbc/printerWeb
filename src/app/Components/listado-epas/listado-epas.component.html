@@ -1,0 +1,12 @@
+<br>
+<div class="busqueda-container">
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar..." />
+</div>
+<br>
+<div class="lista-container">
+  <ul class="list-group">
+    <li *ngFor="let epa of filteredEpas()" class="list-group-item list-group-item-action" aria-current="true" (click)="imprimirDatos(epa.id)" (click)="notificar(epa.tranid)" (click)="seleccionarEpa(epa.id, epa.numpedido)">
+      {{ epa.tranid }} - {{ epa.numpedido }} 
+    </li>
+  </ul>
+</div>

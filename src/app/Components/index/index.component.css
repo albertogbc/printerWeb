@@ -1,0 +1,38 @@
+.contenedor {
+    display: flex;          
+    align-items: flex-start; 
+    margin-top: 5px;
+    margin-left: 5px; /* Margen general */
+    width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho */
+  }
+  
+  .listado-container {
+    margin-left: 1px; 
+    margin-top: 30px;/* Margen uniforme */
+    width: 300px; 
+    margin-right: 20px;/* Ajusta el ancho según sea necesario */
+  }
+  
+  .etiqueta-container {
+    margin-top: 5px;
+    margin-left: 1px; /* Margen uniforme */
+    flex-grow: 1; /* Permite que este componente ocupe el resto del espacio */
+  }
+  
+  body {
+    height: 100vh; /* Altura del viewport */
+    overflow-x: hidden; /* Evita el desplazamiento */
+    position: relative; /* Establece el contexto para elementos hijos */
+}
+.navbar {
+    background-color: orange; /* Color de la barra */
+    height: 56px; /* Altura de la barra, puedes ajustarla */
+    width: 100%; /* Ancho completo */
+    position: fixed; /* Fija la barra en la parte superior */
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+* {
+    box-sizing: border-box;
+}

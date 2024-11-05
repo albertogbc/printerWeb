@@ -1,0 +1,33 @@
+
+
+
+
+
+.custom-table {
+  width: 95%; /* La tabla ocupa el 100% del contenedor */
+/* Permite que las palabras largas se dividan */
+}
+
+
+  .table-hover th.lote,
+  .table-hover th.cantidad,
+  .table-hover th.capacidad {
+    padding: 500px;
+  }
+
+
+.custom-table2 {
+  width: 150%; 
+}
+
+
+.form-container {
+  max-height: 345px; 
+  overflow-y: auto;  
+ 
+}
+
+.button-container {
+  position: relative; 
+  margin-top: 5px;
+}

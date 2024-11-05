@@ -1,0 +1,152 @@
+
+   
+  
+   
+  
+    <!-- Submit button
+    
+    
+    <table class="table table-hover">
+        <thead  class="thead-dark">
+          <tr>
+            <th scope="col">Seleccionar</th>
+            <th scope="col">ccb</th>
+            <th scope="col">descripcion</th>
+            <th scope="col">lote</th>
+       
+          </tr>
+        </thead>
+        <tbody>
+            
+          <tr *ngFor="let product of valorPorDefecto?.items">
+            <th scope="row">
+                <input type="radio" name="selectedProduct"  />
+            </th>
+            <th scope="row">{{ product.ccb }}</th>
+            <th scope="row">{{ product.description }}</th>
+            <th scope="row">{{ product.lote }}</th>
+           
+            
+          </tr>
+        </tbody>
+      </table>
+      <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4">Imprimir</button>
+    
+     -->
+     <table class="table-hover custom-table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" style="text-align: center; font-size: large;">Direccion Entrega</th>
+          <th scope="col" style="text-align: center; font-size: large;">Direccion Final</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let header of headers">
+          <td>{{header?.nombreentrega}} || {{ header?.calleentrega}} {{header?.numeroentrega }} {{header?.coloniaentrega}} {{header?.municipioentrega}} {{header?.zipentrega}} {{header?.estadoentrega | uppercase}} {{header?.paisfinal}}</td>
+          <td>{{ header?.nombrefinal}} || {{ header?.callefinal}} {{ header?.numerofinal}} {{ header?.coloniafinal}} {{ header?.municipiofinal}} {{ header?.zipfinal}} {{ header?.estadofinal}} {{ header?.paisfinal}}</td>
+        </tr>
+    
+      </tbody>
+    </table>
+    <br>
+    
+      
+       <p>
+        
+        
+        <span style="font-weight: bold; margin-left: 50px;">Orden: {{orden}}</span>
+        <label for="valorNoRemision" style="margin-right: 10px; font-weight: bold;margin-left: 50px;">No. de remision:</label>
+      
+      <input id="valorNoRemision" type="text" [(ngModel)]="valorNoRemision" style="width: 150px; margin-left: 10px;"/>
+        <select style="margin-left: 20px;" (change)="onSelectImpresora($event)">
+          <option value="" disabled selected>Selecciona una impresora...</option>
+          <ng-container *ngFor="let impresora of listadoImpresoras">
+            <option [value]="impresora.id">
+              {{ impresora.nombre }}
+            </option>
+          </ng-container>
+        </select>
+        
+        
+        
+      </p>
+    
+ 
+    <br>
+    <div class="form-container">
+      <form *ngFor="let form of formularios; let i = index" [formGroup]="form">
+        <table class="table-hover " >
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col" >CCB</th>
+              <th scope="col">Descripción</th>
+              <th scope="col" style="padding-right: 30px;">Lote</th>
+              <th scope="col" >Pzs</th>
+              <th scope="col" >Capacidad</th>
+              <th scope="col" >Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <input 
+                  type="radio" 
+                  name="selectedProduct" 
+                  [value]="i" 
+                  (change)="onSelect(form)" 
+                  [checked]="selectedForm === form" 
+                />
+              </th>
+              <td>
+                <span >{{ form.get('clave')?.value }}</span>
+                <input formControlName="clave" class="input-desactivado" hidden />
+              </td>
+              <td>
+                <span >{{ form.get('description')?.value }}</span>
+                <textarea formControlName="description" class="input-desactivado" hidden></textarea>
+              </td>
+              <td>
+                <span style="padding-right: 20px;">{{ form.get('lote')?.value }}</span>
+                <input formControlName="lote" class="input-desactivado"  hidden />
+              </td>
+              <td>
+                <span >{{ form.get('lotQuantity')?.value | number }}</span>
+                <input formControlName="lotQuantity" class="input-desactivado" hidden />
+              </td>
+              <td><input formControlName="cantidadDeEtiquetas" type="number" min="1" style="width: 50px;" /></td>
+              <td><input formControlName="cantidadCustom" type="number" min="1"  style="width: 50px;" /></td>
+              <td><textarea formControlName="direntrega" hidden></textarea></td>
+              <td><textarea formControlName="dirfinal" hidden></textarea></td>
+              <td><textarea formControlName="dirsubsidiaria" hidden></textarea></td>
+              <td><input formControlName="rfc" hidden /></td>
+              <td><input formControlName="numeroContrato" hidden /></td>
+              <td><input formControlName="numeroOrden" hidden /></td>
+              <td><input formControlName="numeroLicitacion" hidden /></td>
+              <td><input formControlName="fechaFabricacion" hidden /></td>
+              <td><input formControlName="lotExpirationDate" hidden /></td>
+              <td><input formControlName="lotItem" hidden /></td>
+              <td><input formControlName="regsanitario" hidden /></td>
+              <td><input formControlName="fabricante" hidden /></td>
+              <td><input formControlName="formaFarmaceutica" hidden /></td>
+
+              <td><input formControlName="nombreentrega" hidden /></td>
+              <td><input formControlName="nombrefinal" hidden /></td>
+              <td><input formControlName="nombreprov" hidden /></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+    
+     
+      <br>
+      <br>
+     <div class="button-container">
+      <button type="button" class="btn btn-primary btn-block mb-4" (click)="printSelected(1)" style="margin-left: 50px; padding: 15px 30px; font-size: 16px;">Imprimir</button>
+      <button type="button" class="btn btn-primary btn-block mb-4" (click)="printSelected(2)" style="margin-left: 100px; padding: 15px 30px; font-size: 16px;">Imprime Resto</button>
+      <button type="button" class="btn btn-primary btn-block mb-4" (click)="printSelected(3)" style="margin-left: 150px; padding: 15px 30px; font-size: 16px;">Imprime Por Cantidad</button>
+     </div>
+      
+      
+      
